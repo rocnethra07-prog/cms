@@ -5,6 +5,7 @@ public class FillIn {
     private String answer ;
     public FillIn(String question, String answer){
         this.answer = answer;
+        //TODO -- this.question = answer?
         this.question = answer;
     }
 
@@ -20,6 +21,7 @@ public class FillIn {
         return question;
     }
 
+    //TODO -- Should this be mutable?
     public void setQuestion(String question) {
         this.question = question;
     }

@@ -20,10 +20,12 @@ public class MCQModel extends Assignment {
         this.listofmcqs = listofmcqs;
     }
 
+    //TODO -- Why do we need getType method? Is this the correct way to check the type of Assignment
     public String getType() {
         return "MCQ Model";
     }
 
+    //TODO -- Do we need 3 implementation of start?
     public void start() {
 
         System.out.println("\nStarting: " + getTitle());
@@ -43,10 +45,13 @@ public class MCQModel extends Assignment {
     }
 
     public int[] doAssignment(Assignment m) {
-
+        //TODO -- Getting as assignment and downcasting is not a good design.
         MCQModel model = (MCQModel)m;
+        //TODO -- Garbage collection ?
+        // Why multiple scanners are not recommended with new System.in instances?
         Scanner sc = new Scanner(System.in);
         int correct = 0;
+        //TODO -- To access getListofmcqs() do we need assignment.
         List<MCQ> questions = model.getListofmcqs();
         for (int i = 0; i < questions.size(); i++) {
             MCQ q = questions.get(i);
@@ -55,7 +60,10 @@ public class MCQModel extends Assignment {
                 System.out.println("   " + ch.getChoice());
             }
             System.out.print("Your answer (A/B/C/D): ");
+            //TODO -- What if user enters invalid input ?
             int idx = "ABCD".indexOf(sc.nextLine().trim().toUpperCase());
+//           TODO -- boolean isCorrectAnswer = q.evaluateAnswer(input);
+            //TODO -- write equals() in choice instead of string comparison.
             boolean isCorrect =  q.getChoices().get(idx).getChoice().equals(q.getCorrect().getChoice());
             if (isCorrect) {
                 System.out.println("Correct!"); correct++;

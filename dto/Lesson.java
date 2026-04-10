@@ -12,7 +12,10 @@ public class Lesson {
     private int index;
     private String videoURL ;
     private List<String> resources;
-
+    //TODO -- Why resources not initialized in constructor?
+    // What happens when we try to access lesson.getResources().add("link.pdf") after creating Lesson.
+    // lesson.getResources().size() will do what?
+    //TODO -- Why index is needed in Lesson? Is this the correct way to maintain the order of lessons in a course? Sync issue?
     public Lesson(String title, String content, int index){
         this.id = IdGenerator.generateLessonId();
         this.title = title;

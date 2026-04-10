@@ -103,6 +103,7 @@ public class NewMainClass {
                     break;
                 case "5":
                     startAssignment();
+                    //TODO -- case 0? and missing break statement
                 case "0":
                     back = true;
                     break;
@@ -155,13 +156,15 @@ public class NewMainClass {
         String description = sc.nextLine().trim();
         System.out.print("Categories (comma-separated): ");
         String catInput = sc.nextLine().trim();
-
+        //TODO: Naming convention
         Set<Category> cats = new LinkedHashSet<>();
         for (String s : catInput.split(","))
             cats.add(new Category(s.trim()));
 
         Course c = new Course(title, description, instructor, cats);
         allCourses.add(c);
+
+        //TODO: Should add created course be done here?
         instructor.addCreatedCourse(c);
         System.out.println("Course created: [" + c.getId() + "] " + c.getName());
     }
@@ -481,6 +484,7 @@ public class NewMainClass {
                 return;
         }
 
+        //TODO -  Why no addAssignment()?
         c.getAssignments().add(assignment);
         System.out.println("Assignment created: [" + assignment.getId() + "] " + assignment.getTitle());
     }
@@ -630,11 +634,11 @@ public class NewMainClass {
             return;
         }
         System.out.print("Enter Course ID to view: ");
+        //TODO -- Should we allow students to view details of courses they are not enrolled in?
         Course c = findCourseById(sc.nextLine().trim());
         if (c == null ) {
             System.out.println("Course not found or not enrolled."); return;
         }
-
         boolean back = false;
         while (!back) {
             System.out.println("\n--- Course: " + c.getName() + " ---");
@@ -690,6 +694,9 @@ public class NewMainClass {
             System.out.println("Assignment not found");
             return ;
         }
+        //TODO -- The caller shouldn't need to know what specific kind of assignment it is.
+        //TODO -- If Assignment guarantees a start() method, why are we checking instanceof before calling it in Main?
+        //TODO -- Why can't I call a.start() instead ?
 
         if (a instanceof MCQModel) {
             ((MCQModel) a).start();
@@ -701,6 +708,8 @@ public class NewMainClass {
 
     }
 
+    //TODO -- Should these findById methods be moved to a separate utility class?
+    // They are doing a linear search which is not efficient for large datasets.
     public static Course findCourseById(String id){
         for(Course c : allCourses){
             if(c.getId().equals(id)){
@@ -753,6 +762,7 @@ public class NewMainClass {
             }
 
             System.out.print("Correct choice (A/B/C/D) : ");
+            //TODO -- What if I give invalid choice?
             String correct = sc.nextLine().trim().toUpperCase();
             int indx = "ABCD".indexOf(correct);
 

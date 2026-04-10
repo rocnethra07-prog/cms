@@ -10,6 +10,7 @@ public class Category {
 
     public Category(String name){
         this.id = IdGenerator.generateCategoryId();
+        //TODO -- What if name is null or ""?
         this.name = name;
     }
 
@@ -32,8 +33,11 @@ public class Category {
     @Override
     public boolean equals(Object obj) {
         if(obj==this) return true;
+        //TODO -- instanceof User?
+        //TODO -- Why check name.equals. If two categories have same name but different id, are they same category? Is this correct?
         if(obj == null || (!(obj instanceof User))) return false;
         Category c = (Category)obj;
+        //TODO -- What happens when name is null but id is not null? (NullPointerException) Is this correct?
         return this.name.equals(c.name);
     }
 

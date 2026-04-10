@@ -2,6 +2,7 @@ package simple_course.dto;
 
 import simple_course.util.IdGenerator;
 
+//TODO -- Why abstract class? Why not interface?
 public abstract class Assignment {
 
     private String id;
@@ -40,6 +41,9 @@ public abstract class Assignment {
         this.description = description;
     }
 
+    //TODO -- Why do we need getType method? Is this the correct way to check the type of Assignment
+    //TODO -- Why do we need start method? What does it do? Is this the correct way to start an assignment?
+    //TODO -- Why no access modifiers? But public in implementation ?
     abstract String getType();
     abstract void start();
     abstract int[] doAssignment(Assignment a);

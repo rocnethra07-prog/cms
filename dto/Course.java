@@ -12,9 +12,11 @@ public class Course {
     private String id;
     private String name;
     private String description;
+    //TODO -- Course - instructor bidirectional responsibility. modifying one side should ideally update the other to prevent inconsistent states.
     private User instructor;
-    private Set<User> students;
 
+    //TODO: Why students, categoryset is set and assignments, lessons in list?
+    private Set<User> students;
     private List<Assignment> assignments;
     private List<Lesson> lessons;
     private Set<Category> categorySet ;
@@ -42,6 +44,7 @@ public class Course {
         return id;
     }
 
+    //TODO -- Why setId if this.id = IdGenerator.generateCourseId(); - what if I change the id of the course after creating it ? Is this correct?
     public void setId(String id) {
         this.id = id;
     }
@@ -74,10 +77,12 @@ public class Course {
         return students;
     }
 
+    //TODO -- setStudents, setLessons, setAssignments - Do we need these setter methods? addLesson(), addAssignment() methods should be sufficient.
     public void setStudents(Set<User> students) {
         this.students = students;
     }
 
+    //TODO -- Encapsulation leak - what if some I do course.getAssignments().clear(). Return unmodifiable list.
     public List<Assignment> getAssignments() {
         return assignments;
     }
@@ -101,4 +106,19 @@ public class Course {
     public void addStudent(User u){
         this.students.add(u);
     }
+
+    //TODO -- Why no equals and hashcode method? What if two same courses created?
+
+    /**
+     Course course1 = new Course("Java 101", "ABC", instructor, categories);
+     course1.setId("course-1");
+
+     Course course2 = new Course("Java 101", "ABC", instructor, categories);
+     course2.setId("course-1");
+
+     Set<Course> enrolledCourses = new HashSet<>();
+     enrolledCourses.add(course1);
+     enrolledCourses.add(course2);
+     *
+     */
 }

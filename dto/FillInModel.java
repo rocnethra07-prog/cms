@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//TODO -- Models are DTOs, so should not have logic. Should we move the logic to a service class? Or is it a naming convention issue?
 public class FillInModel extends Assignment {
+    //TODO: Why list of fillups and not set? Can we have duplicate questions?
+    //TODO: Why not a map of question and answer?
     private List<FillIn> listoffillups;
 
     public FillInModel(String title, String description, int marks) {
@@ -30,8 +33,9 @@ public class FillInModel extends Assignment {
         System.out.println("Total Marks: " + getTotalMarks());
 
         int score = 0, total = 0;
-
-        int[] res = doAssignment(this);
+        //TODO -- What if I pass like this? What happens ?
+        int[] res = doAssignment(new MCQModel(getTitle(), getDescription(), getTotalMarks()));
+        //TODO -- What is res[0], res[1]
         score = res[0];
         total = res[1];
 
@@ -43,7 +47,6 @@ public class FillInModel extends Assignment {
     }
 
     public int[] doAssignment(Assignment f) {
-
         FillInModel model = (FillInModel) f;
         Scanner sc = new Scanner(System.in);
         int correct = 0;

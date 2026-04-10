@@ -8,6 +8,7 @@ public class MCQ {
     private Choice correct ;
 
     public MCQ(String question, List<Choice> choices , Choice correct){
+        //TODO -- What is correct choice is not in list of choices?
         this.question= question;
         this.choices = choices;
         this.correct = correct;
@@ -29,6 +30,7 @@ public class MCQ {
         this.choices = choices;
     }
 
+    //TODO -- What if correct is not in choices? Is this correct?
     public Choice getCorrect() {
         return correct;
     }
@@ -36,6 +38,8 @@ public class MCQ {
     public void setCorrect(Choice correct) {
         this.correct = correct;
     }
+
+    //TODO - evaluateAnswer should be done here instead of MCQModel.java
 }
 
 

@@ -9,6 +9,7 @@ public class TrueOrFalse {
         this.answer = answer;
     }
 
+    //TODO -- isAnswer() - naming.
     public boolean isAnswer() {
         return answer;
     }

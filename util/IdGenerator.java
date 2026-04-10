@@ -1,6 +1,9 @@
 package simple_course.util;
 
 public class IdGenerator {
+
+    //TODO -- Where is encapsulation? What if I do IdGenerator.userid = 1000; from outside? How to prevent that?
+    //TODO -- Is this how we generate unique id's or any other solution?
     public static long userid = 1;
     public static long courseid = 1;
     public static long categoryid = 1;

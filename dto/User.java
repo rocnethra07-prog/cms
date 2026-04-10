@@ -17,6 +17,11 @@ public class User {
 
     private Mode mode;
 
+    //TODO : Created Courses will always be empty for students. Is this correct?
+    //TODO : Do we need to maintain the list of created and enrolled courses in the user class?
+    //TODO : Do we need to maintain the password in the user class?
+    //TODO : Do we need to maintain the email in the user class? Or can we use the id as the unique identifier for the user?
+    //Why mode is not used ?
     public User(String name, String email, String password){
         this.id = IdGenerator.generateUserId();
         this.name = name;
@@ -95,6 +100,7 @@ public class User {
             this.mode = Mode.valueOf(mode.toUpperCase());
         }
         catch (Exception e) {
+            //TODO -- Catching a generic Exception to handle a failed Enum parsing is a bad practice. It should specifically catch IllegalArgumentException so it doesn't accidentally swallow other underlying system errors.
             System.out.println("Invalid mode: " + mode);
         }
     }
@@ -113,6 +119,7 @@ public class User {
 
     @Override
     public int hashCode() {
+        //TODO -- We are using email as the unique identifier for the user. Is this correct? What happens when email ID changes for the user?
         return Objects.hash(this.email);
     }
 }
